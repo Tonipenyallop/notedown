@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Notes from "./Notes";
 import axios from "axios";
-import NoteTakingSpace from "../components/NotetakingSpace";
+import NoteTakingSpace from "./NotetakingSpace";
 import "./styles.css";
 function App() {
   const [notes, setNotes] = useState([]);
