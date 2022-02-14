@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Notes from "./Notes";
 import axios from "axios";
-import NoteTakingSpace from "./NoteTakingSpace";
-import Input from "./Input";
+import NoteTakingSpace from "../components/NotetakingSpace";
+import "./styles.css";
 function App() {
   const [notes, setNotes] = useState([]);
   const [isShown, setIsShown] = useState(false);
@@ -15,19 +15,8 @@ function App() {
 
   return (
     <div>
+      <NoteTakingSpace />
       <Notes notes={notes} isShown={isShown} setIsShown={setIsShown} />
-
-      <input type="text" placeholder="Right side " id="input" />
-      <button
-        onClick={() => {
-          const input = document.getElementById("input");
-          console.log(input.value);
-          axios.post("/api/add", { todo: input.value });
-          input.value = "";
-        }}
-      >
-        add
-      </button>
     </div>
   );
 }

@@ -1,10 +1,10 @@
-// const knex = require("knex");
+const knex = require("knex");
 
-// const config =
-//   process.env.NODE_ENV === "production" ? "production" : "development";
+const config =
+  process.env.NODE_ENV === "production" ? "production" : "development";
 
-// const mode = require("../knexfile")[config];
+const mode = require("../knexfile")[config];
 
-// const db = knex(mode);
+const db = knex(mode);
 
-// module.exports = db;
+module.exports = db;

@@ -1,44 +1,20 @@
 import React from "react";
 import axios from "axios";
+import Note from "./Note";
 
 export default function Notes({ notes, isShown, setIsShown }) {
+  function toggle() {
+    const temp = !isShown;
+    console.log(temp);
+    setIsShown(temp);
+  }
+
   return (
     <div>
       {notes.length === 0 ? (
-        <div
-          onClick={() => {
-            const temp = !isShown;
-            console.log(temp);
-            setIsShown(temp);
-          }}
-        >
-          It is empty
-        </div>
+        <div onClick={toggle}>It is empty</div>
       ) : (
-        <div>
-          {notes.map((note) => (
-            <div key={note.id}>
-              <div
-                onClick={() => {
-                  const temp = !isShown;
-                  console.log(temp);
-                  setIsShown(temp);
-                }}
-              >
-                {` ${note.id} ${note.todo}`}
-              </div>
-
-              {isShown ? <li>Que pasa tio</li> : <div></div>}
-              <button
-                onClick={() => {
-                  axios.delete("/api/delete", { data: { todo: note.todo } });
-                }}
-              >
-                delete
-              </button>
-            </div>
-          ))}
-        </div>
+        <Note notes={notes} isShown={isShown} setIsShown={setIsShown} />
       )}
     </div>
   );
