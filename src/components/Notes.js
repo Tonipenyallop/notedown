@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export default function Notes({ notes, isShown, setIsShown }) {
   return (
@@ -24,6 +25,13 @@ export default function Notes({ notes, isShown, setIsShown }) {
                   setIsShown(temp);
                 }}
               >{` ${note.id} ${note.todo}`}</div>
+              <button
+                onClick={() => {
+                  axios.delete("/api/delete", { data: { todo: note.todo } });
+                }}
+              >
+                delete
+              </button>
             </div>
           ))}
         </div>

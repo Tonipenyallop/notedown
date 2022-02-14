@@ -24,11 +24,21 @@ app.get("/api/notes", async (req, res) => {
   res.send(table);
 });
 
+app.post("/api/add", async (req, res) => {
+  await db("notes").insert({ todo: req.body.todo });
+
+  res.send("Added successfully");
+});
+
+app.delete("/api/delete", async (req, res) => {
+  await db("notes").del().where("todo", req.body.todo);
+
+  res.send("Deleted successfully");
+});
+
 try {
-  () => {
-    db.migrate.latest();
-    //  db.seed.run();
-  };
+  db.migrate.latest();
+  // db.seed.run();
   app.listen(PORT, () => {
     console.log(`Listening PORT ${PORT}`);
   });
