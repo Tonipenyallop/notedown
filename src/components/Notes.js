@@ -4,7 +4,15 @@ export default function Notes({ notes, isShown, setIsShown }) {
   return (
     <div>
       {notes.length === 0 ? (
-        <div>No Notes yet</div>
+        <div
+          onClick={() => {
+            const temp = !isShown;
+            console.log(temp);
+            setIsShown(temp);
+          }}
+        >
+          Be happy as always
+        </div>
       ) : (
         <div>
           {notes.map((note) => (
