@@ -18,17 +18,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
-app.get("/api/notes", async (req, res) => {
-  // console.log(db.select.table("notes"));
-  const table = await db.select().table("notes");
-  res.send(table);
-});
-
 try {
-  async () => {
-    await db.migrate.latest();
-    await db.seed.run();
-  };
+  db.migrate.latest();
+  // db.seed.run();
+
   app.listen(PORT, () => {
     console.log(`Listening PORT ${PORT}`);
   });
