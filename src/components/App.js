@@ -13,6 +13,8 @@ function App() {
     sentReq();
   }, [notes]);
 
+  // console.log(document.querySelectorAll(".notes"));
+
   return (
     <div>
       <NoteTakingSpace />

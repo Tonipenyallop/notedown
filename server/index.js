@@ -11,6 +11,11 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
+app.get("/api/note", async (req, res) => {
+  const table = await db.select().table("notes").where("todo", req.body);
+  res.send(table);
+});
+
 app.get("/api/notes", async (req, res) => {
   const table = await db.select().table("notes");
   res.send(table);

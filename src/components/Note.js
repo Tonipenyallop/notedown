@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function Note({ notes, isShown, setIsShown }) {
   function toggle() {
+    // console.log(el.dataset.shown);
     const temp = !isShown;
     console.log(temp);
     setIsShown(temp);
@@ -12,10 +13,16 @@ export default function Note({ notes, isShown, setIsShown }) {
     <div>
       <div>
         {notes.map((note) => (
-          <div key={note.id}>
-            <div onClick={toggle}>{note.todo}</div>
+          <div key={note.id} className="notes">
+            <div
+              onClick={() => {
+                console.log(note.todo);
+              }}
+            >
+              {note.todo}
+            </div>
 
-            {isShown ? <li>Que pasa tio</li> : <div></div>}
+            {/* {isShown ? <li>Que pasa tio</li> : <div></div>} */}
             <button
               onClick={() => {
                 axios.delete("/api/delete", { data: { id: note.id } });
