@@ -16,7 +16,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, "build")));
+app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 app.get("/api/notes", (_, res) => {
   res.send("send message successfully");
