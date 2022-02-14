@@ -2,11 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const knex = require("knex");
-const mode = require("../knexfile");
 const config =
   process.env.NODE_ENV === "production" ? "production" : "development";
 
-const db = knex(mode[config]);
+const mode = require("../knexfile")[config];
+const db = knex(mode);
 
 // const db = require("../db/index");
 
@@ -18,8 +18,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
-app.get("/api/notes", (_, res) => {
-  res.send("send message successfully");
+app.get("/api/notes", async (req, res) => {
+  // console.log(db.select.table("notes"));
+  const table = await db.select().table("notes");
+  res.send(table);
 });
 
 try {
