@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function NoteTakingSpace() {
-  return <div>NoteTakingSpace</div>;
+export default function NoteTakingSpace({ isShown }) {
+  return (
+    <div>{isShown ? <input placeholder="NoteTakingSpace" /> : <div></div>}</div>
+  );
 }

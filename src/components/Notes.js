@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Notes({ notes }) {
+export default function Notes({ notes, isShown, setIsShown }) {
   return (
     <div>
       {notes.length === 0 ? (
@@ -9,8 +9,13 @@ export default function Notes({ notes }) {
         <div>
           {notes.map((note) => (
             <div key={note.id}>
-              <div>{` ${note.id} ${note.todo}`}</div>
-              <button>Click me</button>
+              <div
+                onClick={() => {
+                  const temp = !isShown;
+                  console.log(temp);
+                  setIsShown(temp);
+                }}
+              >{` ${note.id} ${note.todo}`}</div>
             </div>
           ))}
         </div>

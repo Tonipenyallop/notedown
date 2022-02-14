@@ -4,6 +4,7 @@ import axios from "axios";
 import NoteTakingSpace from "./NoteTakingSpace";
 function App() {
   const [notes, setNotes] = useState([]);
+  const [isShown, setIsShown] = useState(false);
   const sentReq = async () => {
     await axios.get("/api/notes").then((res) => setNotes(res.data));
   };
@@ -13,8 +14,8 @@ function App() {
 
   return (
     <div>
-      <Notes notes={notes} />
-      <NoteTakingSpace />
+      <Notes notes={notes} isShown={isShown} setIsShown={setIsShown} />
+      <NoteTakingSpace isShown={isShown} />
     </div>
   );
 }
