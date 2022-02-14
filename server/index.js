@@ -25,9 +25,10 @@ app.get("/api/notes", async (req, res) => {
 });
 
 try {
-  db.migrate.latest();
-  db.seed.run();
-
+  async () => {
+    await db.migrate.latest();
+    await db.seed.run();
+  };
   app.listen(PORT, () => {
     console.log(`Listening PORT ${PORT}`);
   });
