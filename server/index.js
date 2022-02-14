@@ -38,7 +38,8 @@ app.delete("/api/delete", async (req, res) => {
 
 try {
   db.migrate.latest();
-  // db.seed.run();
+  db.seed.run();
+
   app.listen(PORT, () => {
     console.log(`Listening PORT ${PORT}`);
   });
