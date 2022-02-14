@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <Notes notes={notes} isShown={isShown} setIsShown={setIsShown} />
-      <NoteTakingSpace isShown={isShown} />
+
       <input type="text" placeholder="Right side " id="input" />
       <button
         onClick={() => {

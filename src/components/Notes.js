@@ -12,7 +12,7 @@ export default function Notes({ notes, isShown, setIsShown }) {
             setIsShown(temp);
           }}
         >
-          Be happy as always
+          It is empty
         </div>
       ) : (
         <div>
@@ -24,7 +24,11 @@ export default function Notes({ notes, isShown, setIsShown }) {
                   console.log(temp);
                   setIsShown(temp);
                 }}
-              >{` ${note.id} ${note.todo}`}</div>
+              >
+                {` ${note.id} ${note.todo}`}
+              </div>
+
+              {isShown ? <li>Que pasa tio</li> : <div></div>}
               <button
                 onClick={() => {
                   axios.delete("/api/delete", { data: { todo: note.todo } });
